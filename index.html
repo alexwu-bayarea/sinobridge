@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="美桥顾问 - 专为中国高净值品牌定制的赴美全栈合规落地解决方案">
+  <title>美桥顾问 | SinoBridge Advisory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1929;
+      --navy-light: #142237;
+      --navy-mid: #1C3154;
+      --gold: #C9A96E;
+      --gold-light: #E8D5AA;
+      --gold-dark: #9C7A38;
+      --white: #FFFFFF;
+      --off-white: #F8F5F0;
+      --gray-100: #F3F4F6;
+      --gray-300: #D1D5DB;
+      --gray-500: #6B7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+      --shadow-lg: 0 20px 48px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      color: var(--gray-700);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── LANGUAGE SWITCHING ── */
+    .lang-en-only { display: none; }
+    .lang-zh-only { display: block; }
+    body.lang-en .lang-en-only { display: block; }
+    body.lang-en .lang-zh-only { display: none; }
+    span.lang-en-only { display: none; }
+    body.lang-en span.lang-en-only { display: inline; }
+    body.lang-en span.lang-zh-only { display: none; }
+    li.lang-en-only { display: none; }
+    body.lang-en li.lang-en-only { display: flex; }
+    body.lang-en li.lang-zh-only { display: none; }
+
+    /* ── TYPOGRAPHY ── */
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', 'STSong', Georgia, serif;
+      color: var(--gray-900);
+      line-height: 1.2;
+      font-weight: 600;
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+    .section-label {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 24px; }
+    .section-subtitle { font-size: 1.125rem; color: var(--gray-500); max-width: 640px; line-height: 1.7; }
+    .divider { width: 64px; height: 2px; background: var(--gold); margin: 24px 0; }
+
+    /* ── NAVIGATION ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: transparent; transition: var(--transition); padding: 24px 0;
+    }
+    #navbar.scrolled {
+      background: rgba(11, 25, 41, 0.97);
+      backdrop-filter: blur(12px);
+      padding: 16px 0;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-mark {
+      width: 40px; height: 40px; background: var(--gold); border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-weight: 700; font-size: 16px;
+      color: var(--navy); letter-spacing: -1px; flex-shrink: 0;
+    }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-text .logo-en { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; color: var(--white); letter-spacing: 0.05em; }
+    .logo-text .logo-zh { font-size: 11px; color: var(--gold); font-weight: 500; letter-spacing: 0.1em; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; font-size: 14px; font-weight: 500;
+      color: rgba(255,255,255,0.8); transition: var(--transition); letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-actions { display: flex; align-items: center; gap: 16px; }
+    .lang-toggle {
+      display: flex; align-items: center; background: rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 2px; border: 1px solid rgba(255,255,255,0.15);
+    }
+    .lang-btn {
+      padding: 5px 12px; border-radius: 18px; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.05em; color: rgba(255,255,255,0.6); transition: var(--transition);
+      cursor: pointer; border: none; background: none;
+    }
+    .lang-btn.active { background: var(--gold); color: var(--navy); }
+    .btn-primary {
+      padding: 10px 22px; background: var(--gold); color: var(--navy); border: none;
+      border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; cursor: pointer;
+      text-decoration: none; letter-spacing: 0.04em; transition: var(--transition);
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(201,169,110,0.4); }
+    .btn-outline {
+      padding: 14px 32px; background: transparent; color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.4); border-radius: var(--radius-sm);
+      font-size: 15px; font-weight: 500; cursor: pointer; text-decoration: none;
+      letter-spacing: 0.04em; transition: var(--transition); display: inline-flex; align-items: center;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: var(--transition); }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; background: var(--navy);
+      z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 22px; color: var(--white); text-decoration: none;
+      font-family: 'Playfair Display', serif; transition: var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-close {
+      position: absolute; top: 24px; right: 24px; background: none; border: none;
+      color: var(--white); font-size: 28px; cursor: pointer; padding: 8px; line-height: 1;
+    }
+    .mobile-lang {
+      display: flex; gap: 12px; margin-top: 8px;
+    }
+    .mobile-lang button {
+      padding: 8px 20px; border-radius: 20px; font-size: 14px; font-weight: 600;
+      cursor: pointer; border: 1.5px solid rgba(255,255,255,0.3); background: none; color: rgba(255,255,255,0.6);
+      transition: var(--transition);
+    }
+    .mobile-lang button.active { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; background: var(--navy);
+      display: flex; align-items: center; position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,169,110,0.07) 0%, transparent 70%),
+        linear-gradient(135deg, #0B1929 0%, #142237 50%, #0E1F35 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,169,110,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,169,110,0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto; padding: 140px 24px 100px;
+      width: 100%;
+    }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+    .hero-eyebrow-line { width: 40px; height: 1px; background: var(--gold); }
+    .hero-eyebrow-text { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+    .hero-title {
+      font-size: clamp(3rem, 7vw, 5.5rem); color: var(--white);
+      line-height: 1.1; margin-bottom: 32px; max-width: 900px;
+    }
+    .hero-title .gold { color: var(--gold); }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem); color: rgba(255,255,255,0.6);
+      max-width: 580px; line-height: 1.85; margin-bottom: 48px; font-weight: 300;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-btn {
+      padding: 16px 36px; background: var(--gold); color: var(--navy); border: none;
+      border-radius: var(--radius-sm); font-size: 15px; font-weight: 600; cursor: pointer;
+      text-decoration: none; letter-spacing: 0.04em; transition: var(--transition);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .hero-btn:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,169,110,0.4); }
+    .hero-scroll {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.35); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+      animation: scrollPulse 2.5s infinite;
+    }
+    .hero-scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--gold), transparent); }
+    @keyframes scrollPulse { 0%,100%{opacity:0.35} 50%{opacity:0.75} }
+
+    /* ── STATS STRIP ── */
+    #stats {
+      background: var(--navy-light); padding: 36px 0;
+      border-top: 1px solid rgba(201,169,110,0.15);
+      border-bottom: 1px solid rgba(201,169,110,0.15);
+    }
+    .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); }
+    .stat-item {
+      text-align: center; padding: 16px 24px;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number { font-family: 'Playfair Display', serif; font-size: 2.25rem; font-weight: 700; color: var(--gold); display: block; margin-bottom: 6px; }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.08em; }
+
+    /* ── POSITIONING ── */
+    #positioning { background: var(--off-white); padding: 88px 0; }
+    .positioning-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .positioning-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem); color: var(--navy);
+      line-height: 1.45; position: relative; padding-left: 24px;
+    }
+    .positioning-quote::before {
+      content: ''; position: absolute; left: 0; top: 6px; bottom: 6px;
+      width: 3px; background: var(--gold); border-radius: 2px;
+    }
+    .positioning-desc { font-size: 15px; line-height: 1.8; color: var(--gray-500); margin-top: 24px; }
+    .positioning-points { display: flex; flex-direction: column; gap: 28px; }
+    .point-item { display: flex; gap: 16px; align-items: flex-start; }
+    .point-icon {
+      width: 46px; height: 46px; background: var(--navy); border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .point-icon svg { width: 22px; height: 22px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .point-text h4 { font-size: 15px; font-weight: 600; color: var(--gray-900); margin-bottom: 5px; }
+    .point-text p { font-size: 13.5px; color: var(--gray-500); line-height: 1.65; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--white); padding: 96px 0; }
+    .services-header { text-align: center; margin-bottom: 64px; }
+    .services-header .divider { margin: 24px auto; }
+    .services-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; }
+    .service-card {
+      background: var(--white); border: 1px solid var(--gray-300);
+      border-radius: var(--radius-lg); padding: 40px; transition: var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+      transform: scaleX(0); transition: var(--transition); transform-origin: left;
+    }
+    .service-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: transparent; }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-tag {
+      display: inline-block; padding: 4px 12px; background: rgba(201,169,110,0.1);
+      border-radius: 20px; font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      color: var(--gold-dark); text-transform: uppercase; margin-bottom: 20px;
+    }
+    .service-icon {
+      width: 56px; height: 56px; background: var(--navy); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
+    }
+    .service-icon svg { width: 28px; height: 28px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .service-card h3 { font-size: 1.4rem; margin-bottom: 6px; color: var(--navy); }
+    .service-en-sub { font-size: 12px; color: var(--gold-dark); font-weight: 600; letter-spacing: 0.07em; margin-bottom: 16px; font-style: italic; }
+    .service-desc { font-size: 14px; color: var(--gray-500); line-height: 1.8; margin-bottom: 24px; }
+    .service-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .service-bullets li { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: var(--gray-700); }
+    .service-bullets li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 8px; }
+
+    /* ── TEAM ── */
+    #team { background: var(--navy); padding: 96px 0; }
+    #team .section-label { color: var(--gold); }
+    #team .section-title { color: var(--white); }
+    #team .section-subtitle { color: rgba(255,255,255,0.5); }
+    #team .divider { background: var(--gold); }
+    .team-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-top: 56px; }
+    .team-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg); padding: 32px; transition: var(--transition); display: flex; gap: 24px;
+    }
+    .team-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(201,169,110,0.3); transform: translateY(-2px); }
+    .team-avatar {
+      width: 76px; height: 76px; border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-family: 'Playfair Display', serif; font-size: 26px;
+      font-weight: 700; color: var(--white); flex-shrink: 0; border: 2px solid rgba(201,169,110,0.35);
+    }
+    .av-j1 { background: linear-gradient(135deg, #2D5A8E, #1B3A6B); }
+    .av-k  { background: linear-gradient(135deg, #1B6B5A, #0D4035); }
+    .av-a  { background: linear-gradient(135deg, #7B3D8E, #4A1B6B); }
+    .av-j2 { background: linear-gradient(135deg, #8E5A2D, #6B3A1B); }
+    .team-info { flex: 1; min-width: 0; }
+    .team-info h3 { font-size: 1.2rem; color: var(--white); margin-bottom: 4px; }
+    .team-role { font-size: 13px; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+    .team-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .team-tag {
+      padding: 3px 10px; background: rgba(201,169,110,0.1); border-radius: 12px;
+      font-size: 11px; color: var(--gold-light); font-weight: 500; border: 1px solid rgba(201,169,110,0.2);
+    }
+    .team-desc { font-size: 13px; color: rgba(255,255,255,0.48); line-height: 1.7; }
+
+    /* ── DASHBOARD ── */
+    #dashboard { background: var(--off-white); padding: 96px 0; }
+    .dashboard-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .dashboard-content h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); color: var(--navy); margin-bottom: 16px; }
+    .dashboard-content p { font-size: 15px; color: var(--gray-500); line-height: 1.8; margin-bottom: 32px; }
+    .dashboard-features { display: flex; flex-direction: column; gap: 12px; }
+    .dashboard-feature {
+      display: flex; align-items: center; gap: 14px; padding: 14px 18px;
+      background: var(--white); border-radius: var(--radius-md); border: 1px solid var(--gray-300);
+      font-size: 14px; color: var(--gray-700); font-weight: 500; transition: var(--transition);
+    }
+    .dashboard-feature:hover { border-color: var(--gold); box-shadow: var(--shadow-sm); }
+    .feature-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    .dashboard-mockup { background: var(--navy); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-lg); }
+    .mockup-header {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;
+      padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .mockup-title { font-size: 13px; font-weight: 600; color: var(--white); font-family: 'Inter', sans-serif; }
+    .mockup-status { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #4ADE80; }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ADE80; animation: blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .mockup-metrics { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-bottom: 16px; }
+    .metric-card { background: rgba(255,255,255,0.05); border-radius: 8px; padding: 14px; }
+    .metric-label { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+    .metric-value { font-size: 20px; font-weight: 700; color: var(--white); font-family: 'Playfair Display', serif; }
+    .metric-change { font-size: 10px; color: #4ADE80; margin-top: 3px; }
+    .metric-change.warn { color: #FBBF24; }
+    .mockup-progress { display: flex; flex-direction: column; gap: 10px; }
+    .progress-item { display: flex; flex-direction: column; gap: 5px; }
+    .progress-label { display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.45); }
+    .progress-bar { height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--gold-dark), var(--gold)); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--navy); padding: 96px 0; }
+    #contact .section-label { color: var(--gold); }
+    #contact .section-title { color: var(--white); }
+    #contact .section-subtitle { color: rgba(255,255,255,0.5); }
+    #contact .divider { background: var(--gold); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; margin-top: 56px; }
+    .contact-info { display: flex; flex-direction: column; gap: 28px; }
+    .contact-item { display: flex; gap: 14px; align-items: flex-start; }
+    .contact-icon {
+      width: 42px; height: 42px; background: rgba(201,169,110,0.1); border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      border: 1px solid rgba(201,169,110,0.2);
+    }
+    .contact-icon svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .contact-item-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .contact-item-value { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+    .contact-form { display: flex; flex-direction: column; gap: 18px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
+    .form-group label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: rgba(255,255,255,0.55); text-transform: uppercase; }
+    .form-group input, .form-group textarea, .form-group select {
+      padding: 12px 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-md); color: var(--white); font-size: 14px; font-family: inherit;
+      transition: var(--transition); outline: none; width: 100%;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.22); }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--gold); background: rgba(255,255,255,0.08); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A96E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    .form-group select option { background: #142237; color: var(--white); }
+    .btn-submit {
+      padding: 14px 32px; background: var(--gold); color: var(--navy); border: none;
+      border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; cursor: pointer;
+      letter-spacing: 0.06em; transition: var(--transition); align-self: flex-start;
+    }
+    .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(201,169,110,0.35); }
+
+    /* ── FOOTER ── */
+    #footer { background: #060F1A; padding: 56px 0 32px; }
+    .footer-top {
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 64px;
+      padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 28px;
+    }
+    .footer-brand-desc { font-size: 13.5px; color: rgba(255,255,255,0.38); line-height: 1.75; margin-top: 16px; max-width: 300px; }
+    .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; font-family: 'Inter', sans-serif; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .footer-col a { font-size: 13.5px; color: rgba(255,255,255,0.4); text-decoration: none; transition: var(--transition); }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.22); }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.18); letter-spacing: 0.08em; }
+
+    /* ── ANIMATIONS ── */
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .positioning-inner, .dashboard-inner, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-actions .btn-primary { display: none; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .team-card { flex-direction: column; align-items: flex-start; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .section { padding: 64px 0; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body class="lang-zh">
+
+<!-- ══════════════ NAVIGATION ══════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-mark">SB</div>
+      <div class="logo-text">
+        <span class="logo-en">SinoBridge Advisory</span>
+        <span class="logo-zh">美桥顾问集团</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services" data-i18n="nav.services">核心服务</a></li>
+      <li><a href="#team"     data-i18n="nav.team">团队阵容</a></li>
+      <li><a href="#dashboard" data-i18n="nav.dashboard">出海仪表盘</a></li>
+      <li><a href="#contact"  data-i18n="nav.contact">联系我们</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-zh" onclick="setLanguage('zh')">中文</button>
+        <button class="lang-btn"        id="btn-en" onclick="setLanguage('en')">EN</button>
+      </div>
+      <a href="#contact" class="btn-primary" data-i18n="nav.cta">预约咨询</a>
+      <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" onclick="toggleMobileMenu()">✕</button>
+  <a href="#services"  onclick="toggleMobileMenu()" data-i18n="nav.services">核心服务</a>
+  <a href="#team"      onclick="toggleMobileMenu()" data-i18n="nav.team">团队阵容</a>
+  <a href="#dashboard" onclick="toggleMobileMenu()" data-i18n="nav.dashboard">出海仪表盘</a>
+  <a href="#contact"   onclick="toggleMobileMenu()" data-i18n="nav.contact">联系我们</a>
+  <div class="mobile-lang">
+    <button id="mbtn-zh" class="active" onclick="setLanguage('zh')">中文</button>
+    <button id="mbtn-en" onclick="setLanguage('en')">EN</button>
+  </div>
+</div>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span class="hero-eyebrow-text" data-i18n="hero.eyebrow">赴美落地全栈解决方案</span>
+    </div>
+    <h1 class="hero-title fade-in">
+      <span class="lang-zh-only">让中国品牌，<br><span class="gold">在美国生根</span></span>
+      <span class="lang-en-only">Where Chinese Excellence<br><span class="gold">Takes Root in America</span></span>
+    </h1>
+    <p class="hero-subtitle fade-in">
+      <span class="lang-zh-only">专为中国高净值品牌定制 · 赴美全栈合规落地解决方案<br>法律 · 财税 · 数字营销 · 实体落地，一站式闭环服务</span>
+      <span class="lang-en-only">End-to-end compliance &amp; market entry solutions for Chinese premium brands. Legal · Tax · Digital Growth · Physical Operations — one integrated partnership.</span>
+    </p>
+    <div class="hero-actions fade-in">
+      <a href="#services" class="hero-btn" data-i18n="hero.cta1">了解我们的解决方案 →</a>
+      <a href="#contact"  class="btn-outline" data-i18n="hero.cta2">预约免费咨询</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span data-i18n="hero.scroll">滚动探索</span>
+  </div>
+</section>
+
+<!-- ══════════════ STATS ══════════════ -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">4</span>
+        <span class="stat-label" data-i18n="stats.1">核心专业模块</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">2</span>
+        <span class="stat-label" data-i18n="stats.2">中美双执业许可</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">50+</span>
+        <span class="stat-label" data-i18n="stats.3">覆盖美国州份</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">360°</span>
+        <span class="stat-label" data-i18n="stats.4">全程闭环合规服务</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ POSITIONING ══════════════ -->
+<section id="positioning">
+  <div class="container">
+    <div class="positioning-inner fade-in">
+      <div>
+        <p class="section-label" data-i18n="pos.label">我们的定位</p>
+        <blockquote class="positioning-quote">
+          <span class="lang-zh-only">让中国企业像美国本土公司一样合规，像中国公司一样高效。</span>
+          <span class="lang-en-only">Operate with American compliance,<br>move with Chinese efficiency.</span>
+        </blockquote>
+        <p class="positioning-desc">
+          <span class="lang-zh-only">我们不只是"咨询"，而是赴美落地运营的全栈合规闭环伙伴。专为中国高净值品牌、高端制造业量身定制，从资本架构到实体落地，从税务合规到数字增长，一站解决。</span>
+          <span class="lang-en-only">We're not just consultants — we're your full-stack operational partner for entering the US market. From capital structure to physical operations, from tax compliance to digital growth, we manage the complete journey.</span>
+        </p>
+      </div>
+      <div class="positioning-points">
+        <div class="point-item">
+          <div class="point-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div class="point-text">
+            <h4 data-i18n="pos.p1.title">中美双语双持证团队</h4>
+            <p data-i18n="pos.p1.desc">律师、CPA、数据科学家与运营专家，均具备中美双重执业背景，深谙两国法规体系。</p>
+          </div>
+        </div>
+        <div class="point-item">
+          <div class="point-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="point-text">
+            <h4 data-i18n="pos.p2.title">常年陪跑，非一次性服务</h4>
+            <p data-i18n="pos.p2.desc">通过月度/季度合规审查，提供年度常年顾问模式，持续守护您的美国业务安全。</p>
+          </div>
+        </div>
+        <div class="point-item">
+          <div class="point-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="point-text">
+            <h4 data-i18n="pos.p3.title">出海驾驶舱，掌控尽在掌握</h4>
+            <p data-i18n="pos.p3.desc">专属在线门户实时呈现税务进度、合规状态与广告ROI，让母公司在万里之外也能安心。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SERVICES ══════════════ -->
+<section id="services">
+  <div class="container">
+    <div class="services-header fade-in">
+      <p class="section-label" data-i18n="svc.label">四大核心模块</p>
+      <h2 class="section-title">
+        <span class="lang-zh-only">全栈合规，针对性破局</span>
+        <span class="lang-en-only">Targeted Solutions Across Four Pillars</span>
+      </h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">
+        <span class="lang-zh-only">针对中国企业赴美最核心的四大痛点，我们提供系统化、模块化的专业解决方案。</span>
+        <span class="lang-en-only">Addressing the four most critical challenges for Chinese companies entering the US market with systematic, modular professional solutions.</span>
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- ① THE STRUCTURE -->
+      <div class="service-card fade-in">
+        <div class="service-tag">THE STRUCTURE</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21V11h6v10"/></svg>
+        </div>
+        <h3>
+          <span class="lang-zh-only">跨境资本通道与控制权架构</span>
+          <span class="lang-en-only">Cross-Border Capital &amp; Control Structure</span>
+        </h3>
+        <p class="service-en-sub">
+          <span class="lang-zh-only">Capital Architecture &amp; Governance Design</span>
+          <span class="lang-en-only">资本架构与治理设计</span>
+        </p>
+        <p class="service-desc">
+          <span class="lang-zh-only">设计并执行"中国母公司—香港平台—美国实体"的合法ODI投资路径，协助发改委、商务部、外管局备案；提供多样化治理模型，确保母公司对美国资产保有实质控制权。</span>
+          <span class="lang-en-only">Design and execute legal ODI pathways through the China-HK-US structure, with full NDRC/MOFCOM/SAFE filing support. Diversified governance models ensure Chinese parent companies maintain substantive control over US assets at all times.</span>
+        </p>
+        <ul class="service-bullets">
+          <li class="lang-zh-only">ODI备案全流程（发改委 · 商务部 · 外管局）</li>
+          <li class="lang-en-only">Full ODI Filing (NDRC · MOFCOM · SAFE)</li>
+          <li class="lang-zh-only">架构设计（母子公司 / VIE / 特许经营协议）</li>
+          <li class="lang-en-only">Structural Design (Holding Co. / VIE / Dealership Agreement)</li>
+          <li class="lang-zh-only">跨境控制权协议与法律防火墙设计</li>
+          <li class="lang-en-only">Cross-Border Control Agreements &amp; Legal Firewall Design</li>
+          <li class="lang-zh-only">高端行业特殊准入Licensing（水翼 · 越野装备等）</li>
+          <li class="lang-en-only">Specialized Industry Licensing (Marine / Off-Road Equipment)</li>
+        </ul>
+      </div>
+
+      <!-- ② THE LAND -->
+      <div class="service-card fade-in">
+        <div class="service-tag">THE LAND</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>
+          <span class="lang-zh-only">全美经营合规与物理落地</span>
+          <span class="lang-en-only">Nationwide Operations &amp; Physical Setup</span>
+        </h3>
+        <p class="service-en-sub">
+          <span class="lang-zh-only">Regulatory Licensing &amp; Site Establishment</span>
+          <span class="lang-en-only">监管许可与实体建设</span>
+        </p>
+        <p class="service-desc">
+          <span class="lang-zh-only">负责特殊行业准入（EPA · DOT · UL），全美范围Showroom/仓库选址谈判，工程Remodel全流程监管，以及与美国地方政府打交道获取各类经营许可证。</span>
+          <span class="lang-en-only">Specialized licensing across EPA, DOT, and UL regulations, plus nationwide site selection for showrooms and warehouses. Full Remodel project supervision and local government licensing across all US states and municipalities.</span>
+        </p>
+        <ul class="service-bullets">
+          <li class="lang-zh-only">EPA / DOT / UL / ADA 行业准入合规</li>
+          <li class="lang-en-only">EPA / DOT / UL / ADA Regulatory Compliance</li>
+          <li class="lang-zh-only">Showroom / 仓库 / 体验店选址与租赁谈判</li>
+          <li class="lang-en-only">Showroom / Warehouse Site Selection &amp; Lease Negotiation</li>
+          <li class="lang-zh-only">Remodel工程监管（ADA · 建筑规范合规）</li>
+          <li class="lang-en-only">Remodel Oversight &amp; Construction Code Compliance</li>
+          <li class="lang-zh-only">地方营业执照 · 环评 · 特殊经营许可申请</li>
+          <li class="lang-en-only">Local Business Licenses, Environmental &amp; Special Permits</li>
+        </ul>
+      </div>
+
+      <!-- ③ THE FINANCE -->
+      <div class="service-card fade-in">
+        <div class="service-tag">THE FINANCE</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h3>
+          <span class="lang-zh-only">跨境财税合规闭环</span>
+          <span class="lang-en-only">Cross-Border Tax &amp; Finance Compliance</span>
+        </h3>
+        <p class="service-en-sub">
+          <span class="lang-zh-only">International Tax Planning &amp; Risk Control</span>
+          <span class="lang-en-only">国际税务筹划与风险控制</span>
+        </p>
+        <p class="service-desc">
+          <span class="lang-zh-only">解决中国企业最头疼的双重征税难题，优化中美利息/股息扣缴税；针对高端耐用品的线上线下多州销售，建立自动化Sales Tax申报系统，规避各州税务局审计风险。</span>
+          <span class="lang-en-only">Eliminating the double taxation burden on Chinese companies and optimizing US-China withholding taxes. Automated multi-state Sales Tax filing systems to proactively manage audit risk across all selling jurisdictions.</span>
+        </p>
+        <ul class="service-bullets">
+          <li class="lang-zh-only">转让定价合规与文档（Transfer Pricing）</li>
+          <li class="lang-en-only">Transfer Pricing Compliance &amp; Documentation</li>
+          <li class="lang-zh-only">多州Sales Tax Nexus判定与自动化申报系统</li>
+          <li class="lang-en-only">Multi-State Sales Tax Nexus Analysis &amp; Automated Filing</li>
+          <li class="lang-zh-only">中美双重征税优化与股息扣缴税规划</li>
+          <li class="lang-en-only">US-China Double Taxation Optimization</li>
+          <li class="lang-zh-only">IRS审计风险管控与全球合并报表</li>
+          <li class="lang-en-only">IRS Audit Risk Management &amp; Global Consolidation</li>
+        </ul>
+      </div>
+
+      <!-- ④ THE GROWTH -->
+      <div class="service-card fade-in">
+        <div class="service-tag">THE GROWTH</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>
+          <span class="lang-zh-only">数据驱动的精准营销合规</span>
+          <span class="lang-en-only">Data-Driven Growth &amp; Digital Compliance</span>
+        </h3>
+        <p class="service-en-sub">
+          <span class="lang-zh-only">Algorithm-Driven Marketing Within Compliance</span>
+          <span class="lang-en-only">算法驱动的合规增长</span>
+        </p>
+        <p class="service-desc">
+          <span class="lang-zh-only">在CCPA等严苛隐私法合规框架下，利用大数据模型优化Google/Meta/TikTok广告ROI，实现技术驱动的品牌溢价。Data Science背景带来比普通代运营公司更深的技术壁垒。</span>
+          <span class="lang-en-only">Within strict CCPA compliance frameworks, leverage advanced data science models to optimize advertising ROI across Google, Meta, and TikTok. Our data science expertise creates a deeper technical moat than any traditional marketing agency.</span>
+        </p>
+        <ul class="service-bullets">
+          <li class="lang-zh-only">数据隐私合规（CCPA · 隐私政策 · 用户信息安全）</li>
+          <li class="lang-en-only">Data Privacy Compliance (CCPA &amp; Privacy Policy Architecture)</li>
+          <li class="lang-zh-only">算法驱动广告投放（Google / Meta / TikTok）</li>
+          <li class="lang-en-only">Algorithm-Driven Ad Optimization (Google / Meta / TikTok)</li>
+          <li class="lang-zh-only">品牌独立站搭建 · 合规运营 · SEO</li>
+          <li class="lang-en-only">Brand Website Build, Compliance Operations &amp; SEO</li>
+          <li class="lang-zh-only">大数据驱动的精准用户画像与获客策略</li>
+          <li class="lang-en-only">Data-Driven User Profiling &amp; Customer Acquisition Strategy</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ TEAM ══════════════ -->
+<section id="team">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label" data-i18n="team.label">核心合伙人</p>
+      <h2 class="section-title">
+        <span class="lang-zh-only">中美双语 · 双持证 · 实战派</span>
+        <span class="lang-en-only">Dual-Licensed · Bilingual · Battle-Tested</span>
+      </h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">
+        <span class="lang-zh-only">我们的核心合伙人均具备中美双重执业资质，深谙两国法规体系，专注为高端中国品牌提供专业降维打击式的服务。</span>
+        <span class="lang-en-only">Our core partners hold dual-country professional qualifications with deep expertise in both US and Chinese regulatory systems, delivering unmatched professional depth for premium Chinese brands.</span>
+      </p>
+    </div>
+
+    <div class="team-grid">
+
+      <!-- Jayden -->
+      <div class="team-card fade-in">
+        <div class="team-avatar av-j1">J</div>
+        <div class="team-info">
+          <h3>Jayden</h3>
+          <p class="team-role">
+            <span class="lang-zh-only">跨境法律合规负责人</span>
+            <span class="lang-en-only">Cross-Border Legal Compliance Director</span>
+          </p>
+          <div class="team-tags">
+            <span class="team-tag lang-zh-only">中美双执业律师</span>
+            <span class="team-tag lang-zh-only">跨境架构师</span>
+            <span class="team-tag lang-en-only">Dual-Admitted Attorney</span>
+            <span class="team-tag lang-en-only">Cross-Border Architect</span>
+          </div>
+          <p class="team-desc">
+            <span class="lang-zh-only">凭借深厚的中美公司法背景，负责ODI资金出境合规路径及美国实体控股权的法律防火墙设计。"懂中国法律的复杂性，更懂美国法庭的规则。"</span>
+            <span class="lang-en-only">Drawing on deep expertise in US and Chinese corporate law, leads ODI compliance pathways and designs legal governance structures for US entities. "Understanding Chinese legal complexity while mastering American courtroom rules."</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Kimmie -->
+      <div class="team-card fade-in">
+        <div class="team-avatar av-k">K</div>
+        <div class="team-info">
+          <h3>Kimmie</h3>
+          <p class="team-role">
+            <span class="lang-zh-only">资深财税负责人 (CPA)</span>
+            <span class="lang-en-only">Senior Finance &amp; Tax Director (CPA)</span>
+          </p>
+          <div class="team-tags">
+            <span class="team-tag lang-zh-only">跨境税务规划专家</span>
+            <span class="team-tag lang-zh-only">风险控制官</span>
+            <span class="team-tag lang-en-only">Cross-Border Tax Strategist</span>
+            <span class="team-tag lang-en-only">Risk Controller</span>
+          </div>
+          <p class="team-desc">
+            <span class="lang-zh-only">深谙IRS监管逻辑，负责全球合并报表、转让定价及各州Sales Tax合规，确保利润合法沉淀。"管理跨境税务风险，不仅是省税，更是为了资产的安全。"</span>
+            <span class="lang-en-only">Expert in IRS regulatory logic, managing consolidated global reporting, transfer pricing, and multi-state Sales Tax compliance. "Managing cross-border tax risks isn't just about saving taxes — it's about protecting your assets."</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Alfred -->
+      <div class="team-card fade-in">
+        <div class="team-avatar av-a">A</div>
+        <div class="team-info">
+          <h3>Alfred</h3>
+          <p class="team-role">
+            <span class="lang-zh-only">数据合规与数字化增长负责人</span>
+            <span class="lang-en-only">Data Compliance &amp; Digital Growth Director</span>
+          </p>
+          <div class="team-tags">
+            <span class="team-tag lang-zh-only">Data Science 专家</span>
+            <span class="team-tag lang-zh-only">算法驱动增长</span>
+            <span class="team-tag lang-en-only">Data Science Expert</span>
+            <span class="team-tag lang-en-only">Algorithm-Driven Growth</span>
+          </div>
+          <p class="team-desc">
+            <span class="lang-zh-only">在CCPA等严苛隐私法框架下，利用大数据模型优化线上广告ROI，实现技术驱动的品牌溢价。"用大数据解决增长问题，同时守住最严苛的数据合规红线。"</span>
+            <span class="lang-en-only">Within strict CCPA compliance frameworks, uses advanced data science models to optimize online advertising ROI and drive tech-enabled brand premiums. "Using big data to solve growth challenges while holding the strictest data compliance line."</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Jiatian -->
+      <div class="team-card fade-in">
+        <div class="team-avatar av-j2">J</div>
+        <div class="team-info">
+          <h3>Jiatian</h3>
+          <p class="team-role">
+            <span class="lang-zh-only">物理落地与行政许可负责人</span>
+            <span class="lang-en-only">Physical Operations &amp; Licensing Director</span>
+          </p>
+          <div class="team-tags">
+            <span class="team-tag lang-zh-only">供应链落地专家</span>
+            <span class="team-tag lang-zh-only">政府事务官</span>
+            <span class="team-tag lang-en-only">Supply Chain Expert</span>
+            <span class="team-tag lang-en-only">Government Affairs Officer</span>
+          </div>
+          <p class="team-desc">
+            <span class="lang-zh-only">从0到1搭建TikTok美国电商推荐业务，拥有跨境商品落地营销全流程的稀缺经验。负责线下选址、Remodel监管及美国地方政府行政许可全流程。"繁琐的美国行政审批数字化、流程化，缩短物理实体的落地周期。"</span>
+            <span class="lang-en-only">Built TikTok's US e-commerce recommendation business from zero, with rare end-to-end cross-border operations expertise. Leads site selection, Remodel supervision, and all US local government licensing. "Digitizing and streamlining complex US administrative approvals to compress physical setup timelines."</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ DASHBOARD ══════════════ -->
+<section id="dashboard">
+  <div class="container">
+    <div class="dashboard-inner fade-in">
+      <div class="dashboard-content">
+        <p class="section-label" data-i18n="dash.label">出海驾驶舱</p>
+        <h2>
+          <span class="lang-zh-only">实时掌控<br>您的美国业务全貌</span>
+          <span class="lang-en-only">Real-Time Visibility Into<br>Your US Operations</span>
+        </h2>
+        <div class="divider"></div>
+        <p>
+          <span class="lang-zh-only">我们为每位客户提供专属的在线业务门户，实时呈现税务进度、租赁合同状态、广告ROI和法律合规清单。让中国母公司在万里之外，也能保持对美国资产的完全控制感与信任感。</span>
+          <span class="lang-en-only">We provide each client with a dedicated online operations portal displaying real-time tax progress, lease contract status, advertising ROI, and legal compliance checklists. Your Chinese headquarters maintains complete visibility and control over all US assets at all times.</span>
+        </p>
+        <div class="dashboard-features">
+          <div class="dashboard-feature"><div class="feature-dot"></div><span data-i18n="dash.f1">税务进度实时追踪</span></div>
+          <div class="dashboard-feature"><div class="feature-dot"></div><span data-i18n="dash.f2">租赁合同状态监控</span></div>
+          <div class="dashboard-feature"><div class="feature-dot"></div><span data-i18n="dash.f3">广告ROI数据面板</span></div>
+          <div class="dashboard-feature"><div class="feature-dot"></div><span data-i18n="dash.f4">法律合规清单追踪</span></div>
+        </div>
+      </div>
+
+      <div class="dashboard-mockup">
+        <div class="mockup-header">
+          <span class="mockup-title" data-i18n="dash.title">出海运营仪表盘</span>
+          <div class="mockup-status"><div class="status-dot"></div><span data-i18n="dash.live">实时更新</span></div>
+        </div>
+        <div class="mockup-metrics">
+          <div class="metric-card">
+            <p class="metric-label" data-i18n="dash.m1">广告ROI</p>
+            <p class="metric-value">4.2x</p>
+            <p class="metric-change">↑ 18% 环比</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric-label" data-i18n="dash.m2">税务合规率</p>
+            <p class="metric-value">100%</p>
+            <p class="metric-change">✓ 全州合规</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric-label" data-i18n="dash.m3">落地进度</p>
+            <p class="metric-value">87%</p>
+            <p class="metric-change">Showroom 进行中</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric-label" data-i18n="dash.m4">许可证状态</p>
+            <p class="metric-value">6/7</p>
+            <p class="metric-change warn">EPA 审核中</p>
+          </div>
+        </div>
+        <div class="mockup-progress">
+          <div class="progress-item">
+            <div class="progress-label"><span data-i18n="dash.p1">ODI架构完成</span><span>100%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label"><span data-i18n="dash.p2">Showroom装修</span><span>72%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:72%"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label"><span data-i18n="dash.p3">数字营销启动</span><span>55%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:55%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label" data-i18n="contact.label">开始合作</p>
+      <h2 class="section-title">
+        <span class="lang-zh-only">预约免费咨询</span>
+        <span class="lang-en-only">Schedule a Free Consultation</span>
+      </h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">
+        <span class="lang-zh-only">联系我们，获取专属的赴美落地方案评估。我们的团队将在24小时内与您取得联系。</span>
+        <span class="lang-en-only">Contact us for a customized US market entry strategy assessment. Our team will reach out within 24 hours.</span>
+      </p>
+    </div>
+
+    <div class="contact-inner fade-in">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.72 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.62 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 7.91a16 16 0 006.29 6.29l.97-.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <p class="contact-item-label" data-i18n="ci.phone">电话</p>
+            <p class="contact-item-value">+1 (424) 309-XXXX</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <p class="contact-item-label" data-i18n="ci.email">邮件</p>
+            <p class="contact-item-value">info@sinobridge.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <p class="contact-item-label" data-i18n="ci.office">办公室</p>
+            <p class="contact-item-value">Los Angeles, CA<br>San Francisco, CA</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div>
+            <p class="contact-item-label">微信 / WeChat</p>
+            <p class="contact-item-value">SinoBridgeAdvisory</p>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label data-i18n="form.name">姓名</label>
+            <input type="text" id="inp-name" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="form.company">公司名称</label>
+            <input type="text" id="inp-company">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label data-i18n="form.email">邮箱</label>
+            <input type="email" id="inp-email" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="form.phone">联系电话</label>
+            <input type="tel" id="inp-phone">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form.service">感兴趣的服务</label>
+          <select id="inp-service">
+            <option value="">──</option>
+            <option value="structure" data-i18n="fs.1">跨境资本架构 / Capital Structure</option>
+            <option value="land"      data-i18n="fs.2">物理落地 / Physical Setup</option>
+            <option value="finance"   data-i18n="fs.3">财税合规 / Tax Compliance</option>
+            <option value="growth"    data-i18n="fs.4">数字营销 / Digital Marketing</option>
+            <option value="all"       data-i18n="fs.5">全栈服务 / Full-Stack Service</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form.message">留言</label>
+          <textarea id="inp-message"></textarea>
+        </div>
+        <button type="submit" class="btn-submit" id="btn-submit" data-i18n="form.submit">提交咨询</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="#" class="nav-logo" style="margin-bottom:0">
+          <div class="logo-mark">SB</div>
+          <div class="logo-text">
+            <span class="logo-en">SinoBridge Advisory</span>
+            <span class="logo-zh">美桥顾问集团</span>
+          </div>
+        </a>
+        <p class="footer-brand-desc">
+          <span class="lang-zh-only">专为中国高净值品牌定制的赴美全栈合规落地解决方案。让中国企业像美国本土公司一样合规，像中国公司一样高效。</span>
+          <span class="lang-en-only">Full-stack compliance and market entry solutions for Chinese premium brands. Operate with American compliance, move with Chinese efficiency.</span>
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="ft.svc">核心服务</h4>
+        <ul>
+          <li><a href="#services" data-i18n="ft.s1">跨境资本架构</a></li>
+          <li><a href="#services" data-i18n="ft.s2">经营合规与落地</a></li>
+          <li><a href="#services" data-i18n="ft.s3">跨境财税规划</a></li>
+          <li><a href="#services" data-i18n="ft.s4">数字营销增长</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="ft.co">关于我们</h4>
+        <ul>
+          <li><a href="#team"      data-i18n="ft.team">核心团队</a></li>
+          <li><a href="#dashboard" data-i18n="ft.dash">出海驾驶舱</a></li>
+          <li><a href="#contact"   data-i18n="ft.contact">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 SinoBridge Advisory Group. <span data-i18n="ft.rights">版权所有</span>.</p>
+      <p class="footer-tagline">
+        <span class="lang-zh-only">专注高端品牌赴美落地运营</span>
+        <span class="lang-en-only">Specializing in Premium Chinese Brand US Market Entry</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════ JAVASCRIPT ══════════════ -->
+<script>
+  /* ── TRANSLATIONS ── */
+  const T = {
+    'nav.services':  {zh:'核心服务',     en:'Services'},
+    'nav.team':      {zh:'团队阵容',     en:'Our Team'},
+    'nav.dashboard': {zh:'出海仪表盘',   en:'Dashboard'},
+    'nav.contact':   {zh:'联系我们',     en:'Contact'},
+    'nav.cta':       {zh:'预约咨询',     en:'Book Consultation'},
+    'hero.eyebrow':  {zh:'赴美落地全栈解决方案', en:'Full-Stack US Market Entry Solutions'},
+    'hero.cta1':     {zh:'了解我们的解决方案 →', en:'Explore Our Solutions →'},
+    'hero.cta2':     {zh:'预约免费咨询',  en:'Book Free Consultation'},
+    'hero.scroll':   {zh:'滚动探索',     en:'Scroll'},
+    'stats.1':       {zh:'核心专业模块', en:'Core Service Modules'},
+    'stats.2':       {zh:'中美双执业许可',en:'Dual-Country Licenses'},
+    'stats.3':       {zh:'覆盖美国州份', en:'States Covered'},
+    'stats.4':       {zh:'全程闭环合规服务',en:'End-to-End Service'},
+    'pos.label':     {zh:'我们的定位',   en:'Our Positioning'},
+    'pos.p1.title':  {zh:'中美双语双持证团队', en:'Bilingual Dual-Licensed Team'},
+    'pos.p1.desc':   {zh:'律师、CPA、数据科学家与运营专家，均具备中美双重执业背景，深谙两国法规体系。', en:'Attorneys, CPAs, data scientists and operations experts with dual-country credentials and deep knowledge of both regulatory systems.'},
+    'pos.p2.title':  {zh:'常年陪跑，非一次性服务', en:'Ongoing Partnership, Not One-Time Service'},
+    'pos.p2.desc':   {zh:'通过月度/季度合规审查，提供年度常年顾问模式，持续守护您的美国业务安全。', en:'Monthly and quarterly compliance reviews through an annual retainer model, continuously protecting your US business.'},
+    'pos.p3.title':  {zh:'出海驾驶舱，掌控尽在掌握', en:'Overseas Dashboard — Full Control'},
+    'pos.p3.desc':   {zh:'专属在线门户实时呈现税务进度、合规状态与广告ROI，让母公司在万里之外也能安心。', en:'Dedicated online portal with real-time tax progress, compliance status, and ad ROI — your HQ stays in control from anywhere.'},
+    'svc.label':     {zh:'四大核心模块', en:'Four Core Service Pillars'},
+    'team.label':    {zh:'核心合伙人',   en:'Core Partners'},
+    'dash.label':    {zh:'出海驾驶舱',   en:'Overseas Dashboard'},
+    'dash.f1':       {zh:'税务进度实时追踪',  en:'Real-Time Tax Progress Tracking'},
+    'dash.f2':       {zh:'租赁合同状态监控',  en:'Lease Contract Status Monitoring'},
+    'dash.f3':       {zh:'广告ROI数据面板',   en:'Advertising ROI Analytics'},
+    'dash.f4':       {zh:'法律合规清单追踪',  en:'Legal Compliance Checklist'},
+    'dash.title':    {zh:'出海运营仪表盘',    en:'US Operations Dashboard'},
+    'dash.live':     {zh:'实时更新',          en:'Live'},
+    'dash.m1':       {zh:'广告ROI',           en:'Ad ROI'},
+    'dash.m2':       {zh:'税务合规率',        en:'Tax Compliance'},
+    'dash.m3':       {zh:'落地进度',          en:'Setup Progress'},
+    'dash.m4':       {zh:'许可证状态',        en:'License Status'},
+    'dash.p1':       {zh:'ODI架构完成',       en:'ODI Structure Complete'},
+    'dash.p2':       {zh:'Showroom装修',      en:'Showroom Remodel'},
+    'dash.p3':       {zh:'数字营销启动',      en:'Digital Marketing Launch'},
+    'contact.label': {zh:'开始合作',          en:'Get Started'},
+    'ci.phone':      {zh:'电话',              en:'Phone'},
+    'ci.email':      {zh:'邮件',              en:'Email'},
+    'ci.office':     {zh:'办公室',            en:'Offices'},
+    'form.name':     {zh:'姓名',              en:'Full Name'},
+    'form.company':  {zh:'公司名称',          en:'Company'},
+    'form.email':    {zh:'邮箱',              en:'Email'},
+    'form.phone':    {zh:'联系电话',          en:'Phone'},
+    'form.service':  {zh:'感兴趣的服务',      en:'Service of Interest'},
+    'form.message':  {zh:'留言',              en:'Message'},
+    'form.submit':   {zh:'提交咨询',          en:'Submit Inquiry'},
+    'fs.1':          {zh:'跨境资本架构 / Capital Structure', en:'Capital Structure'},
+    'fs.2':          {zh:'物理落地 / Physical Setup',        en:'Physical Market Setup'},
+    'fs.3':          {zh:'财税合规 / Tax Compliance',        en:'Tax Compliance'},
+    'fs.4':          {zh:'数字营销 / Digital Marketing',     en:'Digital Marketing'},
+    'fs.5':          {zh:'全栈服务 / Full-Stack Service',    en:'Full-Stack Service'},
+    'ft.svc':        {zh:'核心服务',    en:'Services'},
+    'ft.s1':         {zh:'跨境资本架构',en:'Capital Structure'},
+    'ft.s2':         {zh:'经营合规与落地',en:'Compliance & Setup'},
+    'ft.s3':         {zh:'跨境财税规划',en:'Tax Planning'},
+    'ft.s4':         {zh:'数字营销增长',en:'Digital Marketing'},
+    'ft.co':         {zh:'关于我们',    en:'Company'},
+    'ft.team':       {zh:'核心团队',    en:'Our Team'},
+    'ft.dash':       {zh:'出海驾驶舱',  en:'Dashboard'},
+    'ft.contact':    {zh:'联系我们',    en:'Contact'},
+    'ft.rights':     {zh:'版权所有',    en:'All rights reserved'},
+  };
+
+  /* Placeholder text per language */
+  const PLACEHOLDERS = {
+    'inp-name':    {zh:'您的姓名', en:'Your name'},
+    'inp-company': {zh:'公司全称', en:'Your company name'},
+    'inp-email':   {zh:'your@email.com', en:'your@email.com'},
+    'inp-phone':   {zh:'+86 / +1', en:'+1 (XXX) XXX-XXXX'},
+    'inp-message': {zh:'请简述您的业务情况和需求…', en:'Please briefly describe your business situation and needs…'},
+  };
+
+  let currentLang = localStorage.getItem('sb-lang') || 'zh';
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('sb-lang', lang);
+
+    /* body class */
+    document.body.classList.remove('lang-zh','lang-en');
+    document.body.classList.add('lang-' + lang);
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+
+    /* data-i18n text nodes */
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (T[key]) el.textContent = T[key][lang];
+    });
+
+    /* input placeholders */
+    Object.entries(PLACEHOLDERS).forEach(([id, map]) => {
+      const el = document.getElementById(id);
+      if (el) el.placeholder = map[lang];
+    });
+
+    /* toggle buttons */
+    ['zh','en'].forEach(l => {
+      const b1 = document.getElementById('btn-'  + l);
+      const b2 = document.getElementById('mbtn-' + l);
+      if (b1) b1.classList.toggle('active', l === lang);
+      if (b2) b2.classList.toggle('active', l === lang);
+    });
+
+    /* page title */
+    document.title = lang === 'zh'
+      ? '美桥顾问 | 赴美全栈合规解决方案'
+      : 'SinoBridge Advisory | US Market Entry Solutions';
+  }
+
+  /* ── NAVBAR SCROLL ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* ── MOBILE MENU ── */
+  function toggleMobileMenu() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+
+  /* ── SCROLL FADE-IN ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  /* ── FORM SUBMIT ── */
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('btn-submit');
+    btn.textContent = currentLang === 'zh' ? '✓ 已收到，我们会尽快联系您' : '✓ Received — we\'ll be in touch soon!';
+    btn.style.background = '#4ADE80';
+    btn.style.color = '#111';
+    setTimeout(() => {
+      btn.textContent = T['form.submit'][currentLang];
+      btn.style.background = '';
+      btn.style.color = '';
+      e.target.reset();
+    }, 4000);
+  }
+
+  /* ── INIT ── */
+  setLanguage(currentLang);
+</script>
+</body>
+</html>
